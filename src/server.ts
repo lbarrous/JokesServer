@@ -1,34 +1,45 @@
-import bodyParser from "body-parser";
+import { json, urlencoded } from "body-parser";
 import cors from "cors";
-import express from "express";
+import express, { Express } from "express";
+import boom from "express-boom";
+import morgan from "morgan";
+import * as winston from "winston";
+import * as routes from "./routes/index";
 
-const app = express();
+const PORT: number = 8080;
 
-const corsOptions = {
-  origin: "http://localhost:8081"
-};
+/**
+ * Root class of your node server.
+ * Can be used for basic configurations, for instance starting up the server or registering middleware.
+ */
+export class Server {
+  private app: Express;
 
-app.use(cors(corsOptions));
+  constructor() {
+    this.app = express();
 
-// parse requests of content-type - application/json
-app.use(bodyParser.json());
+    // Express middleware
+    this.app.use(
+      cors({
+        optionsSuccessStatus: 200
+      })
+    );
+    this.app.use(
+      urlencoded({
+        extended: true
+      })
+    );
+    this.app.use(json());
+    this.app.use(boom());
+    this.app.use(morgan("combined"));
+    this.app.listen(PORT, () => {
+      winston.log("info", `--> Server successfully started at port ${PORT}`);
+    });
+    routes.initRoutes(this.app);
+  }
 
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.get( "/", ( req, res ) => {
-  res.send( "Hellooooooo!" );
-} );
-
-/* // call sync()
-const db = require("./models");
-db.sequelize.sync();
-
-// Jokes routes
-require("./routes/jokes.js")(app); */
-
-// set port, listen for requests
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
-});
+  getApp() {
+    return this.app;
+  }
+}
+new Server();
