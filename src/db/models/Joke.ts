@@ -36,3 +36,7 @@ JokeModel.init(
   },
   { sequelize, modelName: "JokeModel" }
 );
+
+/*
+CREATE TABLE Jokes (id VARCHAR(20), owner VARCHAR(20),
+       species VARCHAR(20), sex CHAR(1), birth DATE, death DATE); */
