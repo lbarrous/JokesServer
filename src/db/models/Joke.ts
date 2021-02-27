@@ -34,7 +34,7 @@ JokeModel.init(
       allowNull: false
     }
   },
-  { sequelize, modelName: "JokeModel" }
+  { sequelize, modelName: "Jokes" }
 );
 
 /*
