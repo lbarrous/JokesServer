@@ -1,9 +1,7 @@
-import * as uuid from "uuid";
 import { JokeAttributes, JokeModel } from "../db/models/Joke";
 
 export function create(joke: JokeAttributes): Promise<any> {
   return JokeModel.create({
-    id: uuid.v1(),
     type: joke.type,
     setup: joke.setup,
     punchline: joke.punchline

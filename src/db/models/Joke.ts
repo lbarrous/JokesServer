@@ -2,7 +2,6 @@ import { DataTypes, Model } from "sequelize";
 import sequelize from "./index";
 
 export interface JokeAttributes {
-  id: string;
   type: string;
   setup: string;
   punchline: string;
@@ -17,10 +16,6 @@ export class JokeModel extends Model<JokeAttributes> {
 
 JokeModel.init(
   {
-    id: {
-      type: DataTypes.UUID,
-      primaryKey: true
-    },
     type: {
       type: DataTypes.STRING,
       allowNull: false
