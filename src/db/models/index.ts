@@ -1,5 +1,5 @@
 import { Options, Sequelize } from "sequelize";
-import { getKeyValue } from "../../utils/index";
+import { getKeyValue } from "../../utils";
 
 import config = require("../config/config.json");
 
