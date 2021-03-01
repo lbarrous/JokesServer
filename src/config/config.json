@@ -1,0 +1,14 @@
+{
+    "development": {
+      "username": "root",
+      "password": "123456",
+      "database": "testdb",
+      "host": "localhost",
+      "dialect": "mysql",
+      "port": 3306,
+      "logging": true,
+      "define": {
+        "charset": "utf8mb4"
+      }
+    }
+  }

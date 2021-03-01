@@ -13,6 +13,6 @@ const sequelize = new Sequelize(
   dbConfig as Options
 );
 
-sequelize.sync({force:true});
+sequelize.sync(/* {force:true} */);
 
 export default sequelize;
