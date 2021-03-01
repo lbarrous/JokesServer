@@ -4,6 +4,7 @@ import JokesService from "../services/JokesService";
 
 export async function getJokesByType(req: Request, res: Response) {
   const types = req.query.type as string[];
+  console.log("getJokesByType -> req.query.type", req.query.type)
   winston.log("info", types);
   JokesService.createJoke({
     punchline: "punchline",

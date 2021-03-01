@@ -13,5 +13,5 @@ export function findAll(): Promise<any> {
 }
 
 export function findByType(type: string[]): Promise<any> {
-  return JokeModel.findOne({ where: { type } });
+  return JokeModel.findAll({ where: { type } });
 }
