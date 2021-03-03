@@ -6,7 +6,7 @@ import morgan from "morgan";
 import * as winston from "winston";
 import * as routes from "./routes/index";
 
-const PORT: number = 8080;
+const PORT: number = 15654;
 
 /**
  * Root class of your node server.
@@ -32,9 +32,11 @@ export class Server {
     this.app.use(json());
     this.app.use(boom());
     this.app.use(morgan("combined"));
-    this.app.listen(PORT, () => {
-      winston.log("info", `--> Server successfully started at port ${PORT}`);
-    });
+    if (!module.parent) {
+      this.app.listen(PORT, () => {
+        winston.log("info", `--> Server successfully started at port ${PORT}`);
+      });
+    }
     routes.initRoutes(this.app);
   }
 
