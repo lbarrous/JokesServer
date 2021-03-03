@@ -6,7 +6,7 @@ import morgan from "morgan";
 import * as winston from "winston";
 import * as routes from "./routes/index";
 
-const PORT: number = 15654;
+const PORT: number = 8181;
 
 /**
  * Root class of your node server.
