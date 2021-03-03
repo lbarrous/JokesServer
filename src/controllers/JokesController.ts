@@ -13,7 +13,6 @@ export async function getJokesByType(req: Request, res: Response) {
   });
 
   const jokes = await JokesService.findJokesByType(types);
-  //const jokes = await JokesService.findAllJokes();
 
   return res.json({ jokes });
 }
