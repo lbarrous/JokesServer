@@ -9,4 +9,7 @@ mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'172.17.0.1';
 mysql> FLUSH PRIVILEGES;
 mysql> create database testdb;
 mysql> use testdb;
+
+cd PATH_TO_PROJECT
+npx sequelize-cli db:seed:all (To seed database)
 ```
